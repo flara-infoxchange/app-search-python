@@ -560,6 +560,63 @@ Creating a search key that will only search over the body field.
 }
 ```
 
+### Get querie analytics
+
+```python
+>>> client.get_querie_analytics(engine_name='us-national-parks')
+{
+  "meta": {
+    "page": {
+      "size": 'number',
+      "current": 'number'
+    }
+  },
+  "results": [
+    {
+    "term": 'string',
+    "clicks": 'number',
+    "queries": 'number'
+    }
+  ]
+}
+```
+
+### Get click analytics
+
+```python
+>>> client.get_click_analytics(engine_name='us-national-parks')
+{
+  "results": [
+    {
+      "document_id": 'string',
+      "clicks": 'number'
+    }
+  ],
+  "meta": {
+    "page": {
+      "size": 'number',
+      "current": 'number'
+    }
+  }
+}
+```
+
+### Get count analytics
+
+```python
+>>> client.get_count_analytics(engine_name='us-national-parks')
+{
+  "results": [
+    {
+      "clicks": 'number',
+      "queries": 'number',
+      "from": 'date',
+      "to": 'date'
+    }
+  ]
+}
+```
+
 ## Running tests
 
 ```python
