@@ -361,3 +361,41 @@ class Client:
         options = options or {}
         return self.session.request('get', endpoint, json=options)
 
+    def get_querie_analytics(self, engine_name, options=None):
+        """
+        Request queries analytics. 
+        See https://swiftype.com/documentation/app-search/api/analytics/queries
+        for more details on options and return values.
+
+        :param engine_name: Name of engine to query.
+        :param options: Dict of filter options.
+        """
+        endpoint = "engines/{}/analytics/queries".format(engine_name)
+        options = options or {}
+        return self.session.request('get', endpoint, json=options)
+
+    def get_click_analytics(self, engine_name, options=None):
+        """
+        Request clicks analytics. 
+        See https://swiftype.com/documentation/app-search/api/analytics/clicks
+        for more details on options and return values.
+
+        :param engine_name: Name of engine to query.
+        :param options: Dict of filter options.
+        """
+        endpoint = "engines/{}/analytics/clicks".format(engine_name)
+        options = options or {}
+        return self.session.request('get', endpoint, json=options)
+
+    def get_count_analytics(self, engine_name, options=None):
+        """
+        Request counts analytics. 
+        See https://swiftype.com/documentation/app-search/api/analytics/counts
+        for more details on options and return values.
+
+        :param engine_name: Name of engine to query.
+        :param options: Dict of filter options.
+        """
+        endpoint = "engines/{}/analytics/counts".format(engine_name)
+        options = options or {}
+        return self.session.request('get', endpoint, json=options)

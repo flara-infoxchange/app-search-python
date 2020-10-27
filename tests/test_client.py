@@ -659,3 +659,75 @@ class TestClient(TestCase):
                 engine_name=self.engine_name
             )
             self.assertEqual(response, expected_return)
+
+    def test_get_querie_analytics(self):
+        expected_return = {
+            "meta": {
+                "page": {
+                "size": 'number',
+                "current": 'number'
+                }
+            },
+            "results": [{
+                "term": 'string',
+                "clicks": 'number',
+                "queries": 'number'
+            }]
+        }
+
+        with requests_mock.Mocker() as m:
+            url = "{}/engines/{}/analytics/queries".format(
+                self.client.session.base_url,
+                self.engine_name
+            )
+            m.register_uri('GET', url, json=expected_return, status_code=200)
+            response = self.client.get_querie_analytics(
+                engine_name=self.engine_name
+            )
+            self.assertEqual(response, expected_return)
+
+    def test_get_click_analytics(self):
+        expected_return = {
+            "results": [{
+                "document_id": 'string',
+                "clicks": 'number'
+            }],
+            "meta": {
+                "page": {
+                    "size": 'number',
+                    "current": 'number'
+                }
+            }
+        }
+
+        with requests_mock.Mocker() as m:
+            url = "{}/engines/{}/analytics/clicks".format(
+                self.client.session.base_url,
+                self.engine_name
+            )
+            m.register_uri('GET', url, json=expected_return, status_code=200)
+            response = self.client.get_click_analytics(
+                engine_name=self.engine_name
+            )
+            self.assertEqual(response, expected_return)
+
+    def test_get_count_analytics(self):
+        expected_return = {
+            "results": [{
+                "clicks": 'number',
+                "queries": 'number',
+                "from": 'date',
+                "to": 'date'
+            }]
+        }
+
+        with requests_mock.Mocker() as m:
+            url = "{}/engines/{}/analytics/counts".format(
+                self.client.session.base_url,
+                self.engine_name
+            )
+            m.register_uri('GET', url, json=expected_return, status_code=200)
+            response = self.client.get_count_analytics(
+                engine_name=self.engine_name
+            )
+            self.assertEqual(response, expected_return)
