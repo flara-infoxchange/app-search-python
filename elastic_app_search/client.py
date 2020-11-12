@@ -361,7 +361,7 @@ class Client:
         options = options or {}
         return self.session.request('get', endpoint, json=options)
 
-    def get_querie_analytics(self, engine_name, options=None):
+    def get_query_analytics(self, engine_name, options=None):
         """
         Request queries analytics. 
         See https://swiftype.com/documentation/app-search/api/analytics/queries
