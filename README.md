@@ -563,7 +563,7 @@ Creating a search key that will only search over the body field.
 ### Get querie analytics
 
 ```python
->>> client.get_querie_analytics(engine_name='us-national-parks')
+>>> client.get_query_analytics(engine_name='us-national-parks')
 {
   "meta": {
     "page": {
