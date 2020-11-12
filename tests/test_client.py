@@ -660,7 +660,7 @@ class TestClient(TestCase):
             )
             self.assertEqual(response, expected_return)
 
-    def test_get_querie_analytics(self):
+    def test_get_query_analytics(self):
         expected_return = {
             "meta": {
                 "page": {
@@ -681,7 +681,7 @@ class TestClient(TestCase):
                 self.engine_name
             )
             m.register_uri('GET', url, json=expected_return, status_code=200)
-            response = self.client.get_querie_analytics(
+            response = self.client.get_query_analytics(
                 engine_name=self.engine_name
             )
             self.assertEqual(response, expected_return)
